@@ -1,0 +1,9 @@
+<h1>レビュー一覧</h1>
+
+<ul>
+  <% @items.each do |item| %>
+    <li><%= link_to item.id, item %> : <%= item.item %></li>
+  <% end %>
+</ul>
+
+<%= link_to '新規レビューの投稿', new_item_path %>
