@@ -1,4 +1,14 @@
 <%= form_for(item) do |f| %>
+  <% if item.errors.any? %>
+    <div id="error_explanation">
+      <ul>
+        <% item.errors.full_items.each do |item| %>
+          <li><%= item %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+  
   <%= f.label :item, 'アイテム' %>
   <%= f.text_field :item %>
 
