@@ -1,10 +1,12 @@
 class ItemsController < ApplicationController
+  before_action :set_item, only: [:show, :edit, :update, :destroy]
+
+  
   def index
     @items = Item.all
   end
 
   def show
-    @item = Item.find(params[:id])
   end
 
   def new
@@ -24,12 +26,9 @@ class ItemsController < ApplicationController
   end
 
   def edit
-    @item = Item.find(params[:id])
   end
 
   def update
-    @item = Item.find(params[:id])
-
     if @item.update(item_params)
       flash[:success] = 'レビューは正常に更新されました'
       redirect_to @item
@@ -40,11 +39,16 @@ class ItemsController < ApplicationController
   end
 
   def destroy
-    @item = Item.find(params[:id])
     @item.destroy
 
     flash[:success] = 'レビューは正常に削除されました'
     redirect_to items_url
+  end
+  
+  private
+
+  def set_item
+    @mitem = Item.find(params[:id])
   end
   
   # Strong Parameter

@@ -1,10 +1,5 @@
 <h1>id: <%= @item.id %> のレビュー編集ページ</h1>
 
-<%= form_for(@item) do |f| %>
-  <%= f.label :item, 'アイテム' %>
-  <%= f.text_field :item %>
-
-  <%= f.submit '投稿' %>
-<% end %>
+<%= render 'form', item: @item %>
 
 <%= link_to '一覧に戻る', items_path %>
