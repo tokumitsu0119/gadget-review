@@ -3,7 +3,7 @@ class ItemsController < ApplicationController
 
   
   def index
-    @items = Item.all
+    @items = Item.all.page(params[:page])
   end
 
   def show
@@ -43,6 +43,12 @@ class ItemsController < ApplicationController
 
     flash[:success] = 'レビューは正常に削除されました'
     redirect_to items_url
+  end
+  
+  def like
+    # favoriteカラムを
+    @item = Item.find(params[:id])
+    redirect_to root_url
   end
   
   private

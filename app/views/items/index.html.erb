@@ -1,9 +1,30 @@
-<h1>レビュー一覧</h1>
+<h1>製品レビューの一覧</h1>
 
-<ul>
-  <% @items.each do |item| %>
-    <li><%= link_to item.id, item %> : <%= item.item %>&gt; <%= item.content %></li>
-  <% end %>
-</ul>
+<% if @items.any? %>
+  <table class="table table-striped" id="review_table">
+    <thead>
+      <tr>
+        <th class="th_like">いいね！</th>
+        <th class="table_th_id">id</th>
+        <th class="table_th_item">アイテム</th>
+        <th>レビュー</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @items.each do |item| %>
+        <tr>
+          <td class="td_like"><%= link_to "いいね！", like_item_path(item), method: :patch, class: "btn btn-primary btn-xs" %></td>
+          <td class="table_td_id"><%= link_to item.id, item %></td>
+          <td class="table_td_item"><%= item.item %></td>
+          <td><%= item.content %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+  <div>
+    <%= paginate @items %>
+  </div>
+<% end %>
 
-<%= link_to '新規レビューの投稿', new_item_path %>
+
+<%= link_to '新規レビューの投稿', new_item_path, class: "btn btn-primary" %>

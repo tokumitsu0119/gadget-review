@@ -13,3 +13,36 @@
  *= require_tree .
  *= require_self
  */
+ 
+#review_table {
+  width: 100%;
+  table-layout: fixed;
+}
+
+#review_table td {
+  word-wrap: break-word;
+}
+
+#review_table .td_like {
+  width: 10%;
+}
+
+#review_table .th_like {
+  width: 9%;
+}
+
+th.table_th_id {
+  width: 3%;
+}
+
+td.table_td_id {
+  width: 10%;
+}
+
+th.table_th_item {
+  width: 10%;
+}
+
+td.table_td_item {
+  width: 10%;
+}

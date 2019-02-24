@@ -1,20 +1,28 @@
-<%= form_for(item) do |f| %>
-  <% if item.errors.any? %>
-    <div id="error_explanation">
-      <ul>
-        <% item.errors.full_items.each do |item| %>
-          <li><%= item %></li>
-        <% end %>
-      </ul>
-    </div>
-  <% end %>
-  
-  <%= f.label :item, 'アイテム' %>
-  <%= f.text_field :item %>
-  
-  <%= f.label :content, 'レビュー' %>
-  <%= f.text_field :content %>
-
-  <%= f.submit '投稿' %>
-<% end %>
+<div class="row">
+  <div class="col-xs-12 col-sm-offset-2 col-sm-8 col-lg-offset-3 col-lg-6">
+    <%= form_for(item) do |f| %>
+    
+      <% if item.errors.any? %>
+        <div class="alert alert-warning">
+          <ul>
+            <% item.errors.full_messages.each do |item| %>
+              <li><%= item %></li>
+            <% end %>
+          </ul>
+        </div>
+      <% end %>
+      
+      <div class="form-group">
+        <%= f.label :item, 'アイテム' %>
+        <%= f.text_field :item, class: 'form-control' %>
+      </div>
+    
+      <div class="form-group">
+        <%= f.label :content, 'レビュー' %>
+        <%= f.text_field :content, class: 'form-control' %>
+    
+      <%= f.submit '投稿' %>
+    <% end %>
+  </div>
+</div>
 
